@@ -1,0 +1,68 @@
+<h2>Search Reservations</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input type="text" class="form-control" id="firstName" [(ngModel)]="searchText.firstName" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input type="text" class="form-control" id="lastName" [(ngModel)]="searchText.lastName" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="searchText.email" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="tel" class="form-control" id="phone" [(ngModel)]="searchText.phone" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table" *ngIf="filteredReservations.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">Arrival Date</th>
+      <th scope="col">Departure Date</th>
+      <th scope="col">Room Size</th>
+      <th scope="col">Room Quantity</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Zip Code</th>
+      <th scope="col">State</th>
+      <th scope="col">City</th>
+      <th scope="col">Extras</th>
+      <th scope="col">Payment</th>
+      <th scope="col">Note</th>
+      <th scope="col">Tags</th>
+      <th scope="col">Reminder</th>
+      <th scope="col">Newsletter</th>
+      <th scope="col">Confirm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of filteredReservations">
+      <td>{{ reservation.stay.arrivalDate | date }}</td>
+      <td>{{ reservation.stay.departureDate | date }}</td>
+      <td>{{ reservation.room.roomSize }}</td>
+      <td>{{ reservation.room.roomQuantity }}</td>
+      <td>{{ reservation.firstName }} {{ reservation.lastName }}</td>
+      <td>{{ reservation.email }}</td>
+      <td>{{ reservation.phone }}</td>
+      <td>{{ reservation.addressLocation.zipCode }}</td>
+      <td>{{ reservation.addressLocation.state }}</td>
+      <td>{{ reservation.addressLocation.city }}</td>
+      <td>{{ reservation.extras.join(', ') }}</td>
+      <td>{{ reservation.payment }}</td>
+      <td>{{ reservation.note }}</td>
+      <td>{{ reservation.tags.join(', ') }}</td>
+      <td>{{ reservation.reminder ? 'Yes' : 'No' }}</td>
+      <td>{{ reservation.newsletter ? 'Yes' : 'No' }}</td>
+      <td>{{ reservation.confirm ? 'Yes' : 'No' }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="filteredReservations.length === 0">No reservations found.</p>
