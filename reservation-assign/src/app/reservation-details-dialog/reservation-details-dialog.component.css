@@ -1,0 +1,9 @@
+::ng-deep .mat-dialog-container {
+    max-width: 800px;
+  }
+  .my-dialog-container {
+    max-width: 800px;
+  }
+  .tag-list {
+    width: 100%;
+  }
