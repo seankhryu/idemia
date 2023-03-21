@@ -43,7 +43,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let reservation of filteredReservations">
+    <tr *ngFor="let reservation of filteredReservations" (dblclick)="dblclick(reservation)">
       <td>{{ reservation.stay.arrivalDate | date }}</td>
       <td>{{ reservation.stay.departureDate | date }}</td>
       <td>{{ reservation.room.roomSize }}</td>

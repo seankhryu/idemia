@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Reservation } from '../reservation';
+import { ReservationDetailComponent } from '../reservation-detail/reservation-detail.component';
+import { ReservationDetailsDialogComponent } from '../reservation-details-dialog/reservation-details-dialog.component';
 import { ReservationService } from '../reservation.service';
 
 @Component({
@@ -24,7 +27,7 @@ export class SearchComponent implements OnInit {
     }
   };
 
-  constructor(private reservationService: ReservationService) { }
+  constructor(private reservationService: ReservationService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.reservationService.getReservations().subscribe(reservations => {
@@ -59,4 +62,26 @@ export class SearchComponent implements OnInit {
       || reservation.tags.some(tag => tag.toLowerCase().includes(this.searchText.toLowerCase()))
     );
   }
+  openDialog(reservation: Reservation) {
+    console.log("openDialog");
+    this.dialog.open(ReservationDetailsDialogComponent, {
+      width: '800px',
+      data: reservation
+    });
+  }
+  openDetailsDialog(reservation: Reservation) {
+    const dialogRef = this.dialog.open(ReservationDetailsDialogComponent, {
+      width: '800px',
+      height: '800px',
+      data: reservation
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  dblclick(row: any) {
+    this.openDetailsDialog(row);
+  }
+  
 }
