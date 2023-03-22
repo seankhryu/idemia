@@ -16,8 +16,6 @@ jobs:
 
     steps:     
     - uses: actions/checkout@v3
-    - name: Check package.json file
-      run: ls package.json  
     - name: Print list      
       run: ls -al     
     - name: Use Node.js ${{ matrix.node-version }}
