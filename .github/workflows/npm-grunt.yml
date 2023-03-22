@@ -26,10 +26,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install
       run: |
-        npm install       
+        npm install 
+        working-directory: reservation-assign
     - name: Build
       run: |      
         ng build
+        working-directory: reservation-assign
         
   unit-test:
     runs-on: ubuntu-latest
@@ -43,6 +45,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Run unit tests
         run: ng test
+        working-directory: reservation-assign
 
   eslint:
     runs-on: ubuntu-latest
@@ -55,6 +58,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Run ESLint
         run: ng eslint
+        working-directory: reservation-assign
         
   e2e-test:
     runs-on: ubuntu-latest
@@ -68,3 +72,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Run end-to-end tests
         run: ng e2e
+        working-directory: reservation-assign
