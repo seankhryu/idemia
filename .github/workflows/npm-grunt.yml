@@ -18,7 +18,7 @@ jobs:
     - name: Print current directory
       run: pwd  
     - name: Print list      
-      run: ls       
+      run: ls -al       
     - name: List files in directory
       run: ls /home/runner/work/idemia/reservation-assign/    
     - uses: actions/checkout@v3
