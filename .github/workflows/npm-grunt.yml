@@ -17,7 +17,7 @@ jobs:
     steps:     
     - uses: actions/checkout@v3
     - name: List files in directory
-      run: ls /home/runner/work/idemia/idemia/reservation-assign/  
+      run: cd /home/runner/work/idemia/idemia/reservation-assign/  
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
