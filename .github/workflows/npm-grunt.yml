@@ -12,17 +12,18 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.14.2]
 
     steps:     
     - uses: actions/checkout@v3
-    - name: List files in directory
+    - name: Change directory
       run: cd /home/runner/work/idemia/idemia/reservation-assign/  
+    - name: Shows current location
+      run: pwd       
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-
     - name: npm install
       run: |
         npm install       
