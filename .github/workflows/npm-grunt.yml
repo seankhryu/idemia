@@ -29,10 +29,11 @@ jobs:
     - name: Install dependencies
       run: npm install 
     - name: Install Angular CLI
-      run: |
-        npm install -g @angular/cli        
+      run: npm install -g @angular/cli              
+    - name: VersionMismatch false
+      run: ng config -g cli.warnings.versionMismatch false      
     - name: Build
-      run: ng build --prod
+      run: ng build
         
   unit-test:
     runs-on: ubuntu-latest
