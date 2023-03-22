@@ -20,7 +20,7 @@ jobs:
     - name: Print list      
       run: ls -al       
     - name: List files in directory
-      run: ls /home/runner/work/idemia/reservation-assign/    
+      run: ls /home/runner/work/idemia/idemia/reservation-assign/    
     - uses: actions/checkout@v3
 
     - name: Use Node.js ${{ matrix.node-version }}
