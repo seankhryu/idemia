@@ -16,7 +16,9 @@ jobs:
 
     steps:
     - name: Print current directory
-      run: pwd    
+      run: pwd  
+    - name: Print list      
+      run: ls       
     - name: List files in directory
       run: ls /home/runner/work/idemia/reservation-assign/    
     - uses: actions/checkout@v3
