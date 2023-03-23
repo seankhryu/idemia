@@ -43,7 +43,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}   
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install           
       - name: Install Angular CLI
         run: npm install -g @angular/cli              
       - name: VersionMismatch false
@@ -62,7 +64,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }} 
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install           
       - name: Install Angular CLI
         run: npm install -g @angular/cli              
       - name: VersionMismatch false
@@ -83,6 +87,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }} 
+      - name: Install dependencies
+        run: npm install           
       - name: Install Angular CLI
         run: npm install -g @angular/cli              
       - name: VersionMismatch false
