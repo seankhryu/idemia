@@ -34,55 +34,46 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     needs: build
+    defaults:
+      run:
+        working-directory: reservation-assign    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm install 
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli              
-      - name: VersionMismatch false
-        run: ng config -g cli.warnings.versionMismatch false           
+          node-version: ${{ matrix.node-version }}          
       - name: Run unit tests
         run: ng test
 
   eslint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: reservation-assign    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm install 
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli              
-      - name: VersionMismatch false
-        run: ng config -g cli.warnings.versionMismatch false              
+          node-version: ${{ matrix.node-version }}              
       - name: Run ESLint
         run: ng eslint
         
   e2e-test:
     runs-on: ubuntu-latest
     needs: unit-test
+    defaults:
+      run:
+        working-directory: reservation-assign    
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm install 
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli              
-      - name: VersionMismatch false
-        run: ng config -g cli.warnings.versionMismatch false              
+          node-version: ${{ matrix.node-version }}            
       - name: Run end-to-end tests
         run: ng e2e
